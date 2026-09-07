@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://e2yfp3ntso53"]
+
+[ext_resource type="PackedScene" uid="uid://dc8si71kqxu1i" path="res://scene/players/Player.tscn" id="1_o8fhd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yf5fn"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_57qmd"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_g4v7s"]
+top_radius = 0.25
+height = 0.05
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g4v7s"]
+height = 0.05
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_57qmd"]
+
+[sub_resource type="Sky" id="Sky_yf5fn"]
+sky_material = SubResource("ProceduralSkyMaterial_57qmd")
+
+[sub_resource type="Environment" id="Environment_g4v7s"]
+background_mode = 2
+sky = SubResource("Sky_yf5fn")
+ambient_light_source = 3
+ambient_light_energy = 0.4
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=1725536466]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1961642232]
+mesh = SubResource("BoxMesh_yf5fn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1714672088]
+shape = SubResource("BoxShape3D_57qmd")
+
+[node name="Player" parent="." unique_id=753250309 instance=ExtResource("1_o8fhd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Plate" type="RigidBody3D" parent="." unique_id=1184088804 groups=["pickup"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plate" unique_id=60747054]
+mesh = SubResource("CylinderMesh_g4v7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plate" unique_id=1509935337]
+shape = SubResource("CylinderShape3D_g4v7s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=441358238]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 16.29176, 0)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=422591087]
+environment = SubResource("Environment_g4v7s")
