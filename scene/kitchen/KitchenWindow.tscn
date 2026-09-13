@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c0tl8w3lcttw7"]
+
+[ext_resource type="Script" uid="uid://cdt7cufpqicn7" path="res://script/kitchen/kitchen_window.gd" id="1_uwbwe"]
+[ext_resource type="PackedScene" uid="uid://bnmk0wsh2cab0" path="res://scene/items/Soup.tscn" id="2_2ipm6"]
+[ext_resource type="PackedScene" uid="uid://c5s0qsme1gsxk" path="res://scene/items/Coffee.tscn" id="3_nxa3e"]
+[ext_resource type="PackedScene" uid="uid://54hmrcbojwym" path="res://scene/items/Salad.tscn" id="4_m0khw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
+size = Vector3(2, 1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(2, 1, 0.5)
+
+[node name="KitchenWindow" type="StaticBody3D" unique_id=2050454891]
+script = ExtResource("1_uwbwe")
+soup_scene = ExtResource("2_2ipm6")
+coffee_scene = ExtResource("3_nxa3e")
+salad_scene = ExtResource("4_m0khw")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=477485807]
+mesh = SubResource("BoxMesh_g4v7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=962363526]
+shape = SubResource("BoxShape3D_g4v7s")
+
+[node name="StatusLabel" type="Label3D" parent="." unique_id=1834601083]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Сдать заказ"
+font_size = 48
+
+[node name="CookingTimer" type="Timer" parent="." unique_id=1623652232]
+wait_time = 8.0
+one_shot = true
+
+[node name="PickupPointA" type="Marker3D" parent="." unique_id=1482258604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.1, 0.39999998)
+
+[node name="PickupPointB" type="Marker3D" parent="." unique_id=2072310649]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.1, 0.39999998)

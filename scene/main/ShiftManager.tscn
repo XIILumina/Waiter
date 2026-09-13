@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://c22g72s72v426"]
+
+[sub_resource type="GDScript" id="GDScript_yah5e"]
+resource_name = "res://script/shift_manager.gd"
+script/source = "extends Node
+
+@export var shift_duration: float = 180.0
+
+@onready var shift_timer: Timer = $ShiftTimer
+
+var last_displayed_second: int = -1
+
+
+func _ready() -> void:
+	shift_timer.timeout.connect(_on_shift_finished)
+	GameState.reset()
+	GameState.begin_shift()
+
+	shift_timer.wait_time = shift_duration
+	shift_timer.start()
+
+
+func _process(_delta: float) -> void:
+	if shift_timer.is_stopped():
+		return
+
+	var seconds_left: int = int(ceil(shift_timer.time_left))
+
+	if seconds_left != last_displayed_second:
+		last_displayed_second = seconds_left
+		GameState.update_shift_time(seconds_left)
+
+
+func _on_shift_finished() -> void:
+	GameState.update_shift_time(0)
+	GameState.end_shift()
+"
+
+[node name="ShiftManager" type="Node" unique_id=1203097263]
+script = SubResource("GDScript_yah5e")
+shift_duration = 45.0
+
+[node name="ShiftTimer" type="Timer" parent="." unique_id=1475891595]
+wait_time = 45.0
+one_shot = true

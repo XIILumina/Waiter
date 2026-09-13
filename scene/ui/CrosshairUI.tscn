@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://buau1thjogsbv"]
+
+[ext_resource type="Script" uid="uid://ddewwr5l18vun" path="res://script/ui/crosshair_ui.gd" id="1_o0d7x"]
+
+[node name="CrosshairUI" type="CanvasLayer" unique_id=131207269]
+script = ExtResource("1_o0d7x")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=203894444]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer" unique_id=604700716]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "+"
+
+[node name="ScorePanel" type="VBoxContainer" parent="." unique_id=1867972747]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 60.0
+
+[node name="ScoreLabel" type="Label" parent="ScorePanel" unique_id=698546421]
+layout_mode = 2
+
+[node name="TipsLabel" type="Label" parent="ScorePanel" unique_id=1098080525]
+layout_mode = 2
+
+[node name="ShiftLabel" type="Label" parent="ScorePanel" unique_id=918255939]
+layout_mode = 2
+text = "Смена:"
+
+[node name="StabilityLabel" type="Label" parent="ScorePanel" unique_id=1634028038]
+visible = false
+layout_mode = 2
+text = " Устойчивость: 100"
+
+[node name="ResultPanel" type="PanelContainer" parent="." unique_id=10019198]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResultPanel" unique_id=1201221872]
+layout_mode = 2
+alignment = 1
+
+[node name="ResultLabel" type="Label" parent="ResultPanel/VBoxContainer" unique_id=645542228]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="ResultPanel/VBoxContainer" unique_id=28091921]
+layout_mode = 2
+text = "Сыграть ещё раз"
+
+[node name="OrderNotebook" type="PanelContainer" parent="." unique_id=242222400]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OrderNotebook" unique_id=1966183454]
+layout_mode = 2
+
+[node name="NotebookTitle" type="Label" parent="OrderNotebook/VBoxContainer" unique_id=650317282]
+layout_mode = 2
+text = " Что записать?"
+
+[node name="SoupButton" type="Button" parent="OrderNotebook/VBoxContainer" unique_id=45056112]
+layout_mode = 2
+text = "Суп"
+
+[node name="CoffeeButton" type="Button" parent="OrderNotebook/VBoxContainer" unique_id=1762467264]
+layout_mode = 2
+text = "Кофе"
+
+[node name="SaladButton" type="Button" parent="OrderNotebook/VBoxContainer" unique_id=366623227]
+layout_mode = 2
+text = "Салат"
+
+[node name="CancelButton" type="Button" parent="OrderNotebook/VBoxContainer" unique_id=2068641584]
+layout_mode = 2
+text = "Закрыть"

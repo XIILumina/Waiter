@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://4kxbwqemsujr"]
+
+[ext_resource type="Script" uid="uid://dt70pem3vevge" path="res://script/customers/customer.gd" id="1_vyykf"]
+[ext_resource type="PackedScene" uid="uid://d18vljjffijwl" path="res://scene/items/OrderTicket.tscn" id="2_mrroa"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_g4v7s"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4v7s"]
+
+[node name="Customer" type="StaticBody3D" unique_id=546583935]
+script = ExtResource("1_vyykf")
+order_ticket_scene = ExtResource("2_mrroa")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1806130338]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_g4v7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2074951562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_g4v7s")
+
+[node name="OrderLabel" type="Label3D" parent="." unique_id=1036177493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
+billboard = 1
+text = "E"
+font_size = 48
+
+[node name="PatienceTimer" type="Timer" parent="." unique_id=888812818]
+wait_time = 15.0
+one_shot = true
+
+[node name="PatienceLabel" type="Label3D" parent="." unique_id=1105711675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, 0)
+billboard = 1
+text = "Терпение"
+font_size = 26
+
+[node name="LeaveTimer" type="Timer" parent="." unique_id=1143421689]
+wait_time = 2.0
+one_shot = true
+
+[node name="SpeechLabel" type="Label3D" parent="." unique_id=1450807376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 0)
+billboard = 1
+text = "Хочу кофе"
+font_size = 48
+
+[node name="SpeechTimer" type="Timer" parent="." unique_id=1582057082]
+wait_time = 2.5
+one_shot = true

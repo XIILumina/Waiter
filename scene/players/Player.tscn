@@ -6,8 +6,13 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g4v7s"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
+size = Vector3(0.8, 0.05, 0.6)
+
 [node name="Player" type="CharacterBody3D" unique_id=753250309]
 script = ExtResource("1_yqjj0")
+tray_move_sway = 0.14
+tray_max_angle = 22.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=418447491]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -25,9 +30,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.2, -0.6)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=2054476877]
-transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659258, 0, 0, 0)
 current = true
 
 [node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D" unique_id=474129918]
-transform = Transform3D(1, 0, 0, 0, 0.9659258, -0.25881907, 0, 0.25881907, 0.9659259, 0, 0, 0)
-target_position = Vector3(0, 0, -3)
+target_position = Vector3(0, 0, -5)
+
+[node name="TrayPivot" type="Node3D" parent="Head/Camera3D" unique_id=159700360]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, -0.9)
+
+[node name="TrayMesh" type="MeshInstance3D" parent="Head/Camera3D/TrayPivot" unique_id=2130877219]
+mesh = SubResource("BoxMesh_g4v7s")
+
+[node name="DishAnchor" type="Marker3D" parent="Head/Camera3D/TrayPivot" unique_id=707422580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=837168804]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -2.3841858e-07)
+
+[node name="CameraThird" type="Camera3D" parent="CameraPivot" unique_id=685371320]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d18vljjffijwl"]
+
+[ext_resource type="Script" uid="uid://b5otqc5it4714" path="res://script/orders/order_ticket.gd" id="1_ayst8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
+size = Vector3(0.3, 0.02, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(0.3, 0.02, 0.2)
+
+[node name="OrderTicket" type="RigidBody3D" unique_id=2070681476 groups=["order_ticket", "pickup"]]
+script = ExtResource("1_ayst8")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=58609986]
+mesh = SubResource("BoxMesh_g4v7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=25546620]
+shape = SubResource("BoxShape3D_g4v7s")

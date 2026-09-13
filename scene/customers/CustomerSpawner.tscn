@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://n8lqcgf2bilb"]
+
+[ext_resource type="Script" uid="uid://cw5rnwnnc0tug" path="res://scene/customers/customer_spawner.tscn.gd" id="1_ylqh5"]
+[ext_resource type="PackedScene" uid="uid://4kxbwqemsujr" path="res://scene/customers/Customer.tscn" id="2_wr5bw"]
+
+[node name="CustomerSpawner" type="Node3D" unique_id=2053870681]
+script = ExtResource("1_ylqh5")
+customer_scene = ExtResource("2_wr5bw")
+
+[node name="SpawnPointA" type="Marker3D" parent="." unique_id=948291359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=524706202]
+one_shot = true
+
+[node name="SpawnPointB" type="Marker3D" parent="." unique_id=164448534]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
